@@ -2,13 +2,19 @@
   --orange: #A85A39;
 }
 
+.landing {
+  background-image: url("map.png");
+  height:100vh;
+}
 
 .map {
  height: 400px;
- width: 80%;
  margin-left: auto;
  margin-right: auto;
+ margin-top: 50px;
+ width: 80%;
 }
+
 .topnav {
     background-color: #3D314A;
     overflow: hidden;
