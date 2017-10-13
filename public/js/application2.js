@@ -8,7 +8,7 @@ function initMap() {
         directionsDisplay.setMap(map);
 
         calculateAndDisplayRoute(directionsService, directionsDisplay);
-        document.getElementById('mode').addEventListener('change', function() {
+        document.getElementById('map').addEventListener('change', function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
       }
