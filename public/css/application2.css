@@ -1,12 +1,33 @@
 :root {
     --orange: #A85A39;
     --darkpurple: #3D314A;
+    --pink: #EAB5A1;
 }
 
 .landing {
   position: relative;
   background-image: url("map.png");
   height:100vh;
+}
+
+.entry-form input, button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.entry-form {
+  text-align: center;
+}
+
+.entry-form button {
+  background-color: var(--pink);
+  border: 1px solid var(--pink);
+  border-radius: 10px;
+  width: 80px;
+  color: white;
 }
 
 .landingnav {
