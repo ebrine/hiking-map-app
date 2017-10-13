@@ -1,22 +1,60 @@
 :root {
-  --orange: #A85A39;
+    --orange: #A85A39;
+    --darkpurple: #3D314A;
 }
 
 .landing {
+  position: relative;
   background-image: url("map.png");
   height:100vh;
 }
 
+.landingnav {
+  background-color: var(--darkpurple);
+  border: 1px solid var(--darkpurple);
+  border-radius: 10px;
+  color: white;
+  left: 38%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-200px);
+  width: 400px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.center-text {
+  text-align: center;
+}
+
+.landingnav a {
+  text-align: center;
+  display: block;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  padding-top: 22px ;
+  text-decoration: none;
+  font-size: 17px;
+  width: 50%;
+}
+
+.landingnav a:hover {
+  /*width: 200px;*/
+  height: 43px;
+  border: 1px solid var(--orange);
+  border-radius: 8px;
+}
 .map {
- height: 400px;
- margin-left: auto;
- margin-right: auto;
- margin-top: 50px;
- width: 80%;
+   height: 400px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 50px;
+   width: 80%;
 }
 
 .topnav {
-    background-color: #3D314A;
+    background-color: var(--darkpurple);
     overflow: hidden;
     height: 100px;
 }
@@ -33,7 +71,7 @@
 }
 
 /* Change the color of links on hover */
-.topnav a:hover {
+.topnav, .landingnav a:hover {
     background-color: var(--orange);
     color: white;
 }
