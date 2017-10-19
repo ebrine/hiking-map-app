@@ -16,6 +16,7 @@
   margin-right: auto;
   padding: 5px;
   margin-bottom: 10px;
+  color: black;
 }
 
 .entry-form {
@@ -34,7 +35,6 @@
   background-color: var(--darkpurple);
   border: 1px solid var(--darkpurple);
   border-radius: 10px;
-  color: white;
   left: 38%;
   position: absolute;
   top: 50%;
@@ -42,6 +42,10 @@
   width: 400px;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+.landingnav h1, h2, h3 {
+
+  color: white;
 }
 .center-text {
   text-align: center;
@@ -90,9 +94,12 @@
     text-decoration: none;
     font-size: 17px;
 }
-
+.topnav a:hover {
+  background-color: var(--pink);
+  color: white;
+}
 /* Change the color of links on hover */
-.topnav, .landingnav a:hover {
+.landingnav a:hover {
     background-color: var(--orange);
     color: white;
 }
