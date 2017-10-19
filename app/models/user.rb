@@ -13,4 +13,14 @@ class User < ActiveRecord::Base
     @password = Password.create(new_password)
     self.password_hash = @password
   end
+
+  def self.authenticate(username, password)
+    user = self.find_by(username: username)
+    if user && user.password == password
+      return user
+    else
+      return false
+    end
+  end
+
 end

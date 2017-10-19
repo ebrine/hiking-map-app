@@ -1,0 +1,130 @@
+:root {
+    --orange: #A85A39;
+    --darkpurple: #3D314A;
+    --pink: #EAB5A1;
+}
+
+.landing {
+  position: relative;
+  background-image: url("map.png");
+  height:100vh;
+}
+
+.entry-form input, button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.entry-form {
+  text-align: center;
+}
+
+.entry-form button {
+  background-color: var(--pink);
+  border: 1px solid var(--pink);
+  border-radius: 10px;
+  width: 80px;
+  color: white;
+}
+
+.landingnav {
+  background-color: var(--darkpurple);
+  border: 1px solid var(--darkpurple);
+  border-radius: 10px;
+  left: 38%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-200px);
+  width: 400px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.landingnav h1, h2, h3 {
+
+  color: white;
+}
+.center-text {
+  text-align: center;
+}
+
+.landingnav a {
+  text-align: center;
+  display: block;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  padding-top: 22px ;
+  text-decoration: none;
+  font-size: 17px;
+  width: 50%;
+}
+
+.landingnav a:hover {
+  /*width: 200px;*/
+  height: 43px;
+  border: 1px solid var(--orange);
+  border-radius: 8px;
+}
+.map {
+   height: 400px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 50px;
+   width: 80%;
+}
+
+.topnav {
+    background-color: var(--darkpurple);
+    overflow: hidden;
+    height: 100px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 64px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.topnav a:hover {
+  background-color: var(--pink);
+  color: white;
+}
+/* Change the color of links on hover */
+.landingnav a:hover {
+    background-color: var(--orange);
+    color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+/* layout */
+.main-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+
+}
+
+.sidebar {
+    float: left;
+    width: 30%;
+    height: 1000px;
+    background-color: var(--orange);
+}
+
+.content-wrap {
+    float: right;
+    width: 70%;
+    height: 1000px;
+    background-color: #EAB5A1;
+}

@@ -11,14 +11,26 @@
     application.css is where you put your styles
   -->
 
-  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" type="text/css" href="/css/application2.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-
+  <script type="text/javascript" src="/js/application.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["KEY"]%>&callback=initMap">
+  </script>
 
   <title></title>
 </head>
+<header>
+  <div class="topnav" id="myTopnav">
+    <a class = "left link" href="/">Home</a>
+    <a class = "right link" href="#news">Login</a>
+    <a class = "right link" href="#contact">Register</a>
+    <a class = "right link" href="#about">About</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+</header>
 <body>
   <%= yield %>
   <footer></footer>
