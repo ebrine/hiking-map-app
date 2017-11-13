@@ -4,11 +4,18 @@ end
 
 post "/sessions" do
   user = User.authenticate(params[:username], params[:password])
-  if user
-    session[:user_id] = user.id
-    redirect :"/home"
+  if request.xhr?
+    if user
+      'redirect'
+    else
+        "That username or password is incorrect"
+    end
   else
-    errors = user.errors.full_messages
-    puts errors
+    if user
+      session[:user_id] = user.id
+      redirect :"/home"
+    else
+      "That username or password is incorrect"
+    end
   end
 end

@@ -21,7 +21,9 @@ $(document).ready(() => {
       url,
       data,
     }).done((response) => {
-      console.log(response);
+      if (response === 'redirect') {
+        window.location.href = '/home';
+      }
     });
   });
 
@@ -39,7 +41,7 @@ $(document).ready(() => {
         window.location.href = '/home';
       }
       else {
-        
+
       }
     });
   });
