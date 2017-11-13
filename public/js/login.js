@@ -23,6 +23,8 @@ $(document).ready(() => {
     }).done((response) => {
       if (response === 'redirect') {
         window.location.href = '/home';
+      } else {
+        $('.error-container').show();
       }
     });
   });
@@ -39,9 +41,14 @@ $(document).ready(() => {
     }).done((response) => {
       if (response === 'redirect') {
         window.location.href = '/home';
-      }
-      else {
-
+      } else {
+        console.log(response)
+        $('.error-text').not(':first').remove()
+        for (const text of response) {
+          let $textVar = $('.error-text:first').clone().append(text);
+          $('.error-container').append($textVar);
+        }
+        $('.error-container').show();
       }
     });
   });

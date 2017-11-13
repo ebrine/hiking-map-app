@@ -3,6 +3,7 @@ get "/users/new" do
 end
 
 post '/users' do
+  p params[:user]
   new_user = User.new(params[:user])
   if request.xhr?
     puts new_user
@@ -10,6 +11,7 @@ post '/users' do
       'redirect'
     else
       content_type :'application/json'
+      p new_user.errors.full_messages
       new_user.errors.full_messages.to_json
     end
   else

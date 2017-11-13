@@ -4,6 +4,14 @@
     --pink: #EAB5A1;
 }
 
+.error-container {
+  width: 80%;
+  background-color: hsl(0, 100%, 80%);
+  color: red;
+  border: 1px solid red;
+  border-radius: 10px;
+  margin: auto;
+}
 .landing {
   position: relative;
   background-image: url("map.png");

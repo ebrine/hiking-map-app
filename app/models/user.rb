@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   validates :username, :email, :password_hash, presence: true
   validates :username, :email, uniqueness: true
+  validates :password, length: { minimum: 8, too_short: "%{count} characters is minimum length"}
+
 
   def password
     @password ||= Password.new(password_hash)

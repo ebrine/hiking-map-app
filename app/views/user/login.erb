@@ -1,4 +1,7 @@
 <form id="login-form" class="entry-form login" action="/sessions" method="post">
+  <div class="error-container"  style="display: none">
+    <p class="error-text">That username or password is incorrect</p>
+  </div>
   <h3>Login</h3>
   <input type="text" name="username" placeholder="username">
   <input type="password" name="password" placeholder="password">
