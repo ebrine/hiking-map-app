@@ -1,4 +1,6 @@
 function initMap() {
+
+  // initialize map, add a few static markers just for testing
   seattle = {lat: 47.6062, lng: -122.321}
   const map = new google.maps.Map($('#map')[0], {
     zoom: 8,
@@ -17,6 +19,9 @@ function initMap() {
     title: "other",
   });
 
+  // when user clicks map, they can add a marker
+  // future --> change so user has to select button to enable this
+  // because it gets annoying
   map.addListener('click', function(e) {
       placeMarker(e.latLng, map);
   });
@@ -33,7 +38,6 @@ function initMap() {
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
-  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
@@ -43,6 +47,8 @@ function initMap() {
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
+
+
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
@@ -63,18 +69,21 @@ function initMap() {
         console.log("Returned place contains no geometry");
         return;
       }
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
+
+      // For adding different icons depending on the place
+
+      // var icon = {
+      //   url: place.icon,
+      //   size: new google.maps.Size(71, 71),
+      //   origin: new google.maps.Point(0, 0),
+      //   anchor: new google.maps.Point(17, 34),
+      //   scaledSize: new google.maps.Size(25, 25)
+      // };
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
         map: map,
-        icon: icon,
+        // icon: icon,
         title: place.name,
         position: place.geometry.location
       }));
@@ -91,18 +100,21 @@ function initMap() {
     var service = new google.maps.places.PlacesService(map);
     var infowindow = new google.maps.InfoWindow();
 
+    // get details for selected location when clicked
     service.getDetails(places[0], callback)
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+
         markers.forEach(function(marker) {
         google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  '<button class="select-marker" onclick="myFunction()">Select</button>');
+              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  '<button class="select-marker">Select</button>');
               infowindow.open(map, this);
             });
         })
       }
     }
   })
+
 
   function clearMarkers() {
     markers.forEach(function(marker) {
@@ -118,3 +130,8 @@ function initMap() {
   })
 
 }
+$(document).ready(() => {
+  $('#map').on('click', ".select-marker", (e) => {
+    console.log("HI")
+  })
+})
