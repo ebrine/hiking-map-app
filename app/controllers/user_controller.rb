@@ -3,15 +3,13 @@ get "/users/new" do
 end
 
 post '/users' do
-  p params[:user]
   new_user = User.new(params[:user])
   if request.xhr?
-    puts new_user
     if new_user.save
+      session[user_id] = new_user.id
       'redirect'
     else
       content_type :'application/json'
-      p new_user.errors.full_messages
       new_user.errors.full_messages.to_json
     end
   else

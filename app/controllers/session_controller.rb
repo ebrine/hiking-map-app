@@ -6,6 +6,7 @@ post "/sessions" do
   user = User.authenticate(params[:username], params[:password])
   if request.xhr?
     if user
+      session[user_id] = user.id
       'redirect'
     else
         "That username or password is incorrect"
