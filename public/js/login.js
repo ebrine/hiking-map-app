@@ -34,13 +34,15 @@ $(document).ready(() => {
     e.preventDefault();
     const url = $(e.currentTarget).attr('action');
     const data = $(e.currentTarget).serialize();
+    console.log(data)
     $.ajax({
       method: "POST",
       url,
       data,
     }).done((response) => {
+      
       if (response === 'redirect') {
-        window.location.href = '/home';
+        window.location.replace('/home');
       } else {
         console.log(response)
         $('.error-text').not(':first').remove()

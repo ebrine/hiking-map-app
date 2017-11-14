@@ -9,7 +9,7 @@ post "/sessions" do
       session[user_id] = user.id
       'redirect'
     else
-        "That username or password is incorrect"
+      "That username or password is incorrect"
     end
   else
     if user
