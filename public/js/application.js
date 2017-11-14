@@ -102,6 +102,7 @@ function initMap() {
     event.preventDefault();
     console.log(map)
     clearMarkers()
+    $("#pac-input").val('')
   })
 
 }
