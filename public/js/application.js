@@ -2,7 +2,7 @@ function initMap() {
   const uluru = {lat: -25.363, lng: 131.044};
   seattle = {lat: 47.6062, lng: -122.321}
   const map = new google.maps.Map($('#map')[0], {
-    zoom: 4,
+    zoom: 8,
     center: seattle,
     mapTypeId: 'hybrid',
   });
@@ -35,7 +35,7 @@ function initMap() {
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
@@ -91,5 +91,21 @@ function initMap() {
     map.fitBounds(bounds);
   });
 
+  function clearMarkers() {
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+  }
+
+  $('#clear-search').click((e) => {
+    event.preventDefault();
+    console.log(map)
+    clearMarkers()
+  })
 
 }
+
+$(document).ready(() => {
+
+})

@@ -104,6 +104,20 @@
   background-color: #EAB5A1;
 }
 
+.search-input {
+  width: 60%;
+  margin: auto;
+  border: 1px solid red;
+  margin-top: 50px;
+
+}
+
+.controls {
+  width: 100%;
+  margin: auto;
+  height: 30px;
+}
+
 /* Main page nav styling */
 .topnav {
     background-color: var(--darkpurple);
