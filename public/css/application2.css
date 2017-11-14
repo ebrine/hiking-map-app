@@ -4,6 +4,7 @@
     --pink: #EAB5A1;
 }
 
+/* login page styling */
 .error-container {
   width: 80%;
   background-color: hsl(0, 100%, 80%);
@@ -78,14 +79,32 @@
   border: 1px solid var(--orange);
   border-radius: 8px;
 }
+
+/* Main page styling */
+
 .map {
-   height: 400px;
+   height: 500px;
    margin-left: auto;
    margin-right: auto;
    margin-top: 50px;
    width: 80%;
 }
 
+.sidebar {
+  float: left;
+  width: 30%;
+  height: 1000px;
+  background-color: var(--orange);
+}
+
+.content-wrap {
+  float: right;
+  width: 70%;
+  height: 1000px;
+  background-color: #EAB5A1;
+}
+
+/* Main page nav styling */
 .topnav {
     background-color: var(--darkpurple);
     overflow: hidden;
@@ -121,18 +140,4 @@
     /* overflow to handle inner floating block */
     overflow: hidden;
 
-}
-
-.sidebar {
-    float: left;
-    width: 30%;
-    height: 1000px;
-    background-color: var(--orange);
-}
-
-.content-wrap {
-    float: right;
-    width: 70%;
-    height: 1000px;
-    background-color: #EAB5A1;
 }

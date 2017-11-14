@@ -22,7 +22,7 @@ $(document).ready(() => {
       data,
     }).done((response) => {
       if (response === 'redirect') {
-        window.location.href = '/home';
+        window.location.replace('/home');
       } else {
         $('.error-container').show();
       }
@@ -40,7 +40,6 @@ $(document).ready(() => {
       url,
       data,
     }).done((response) => {
-      
       if (response === 'redirect') {
         window.location.replace('/home');
       } else {
