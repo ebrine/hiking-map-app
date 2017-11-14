@@ -19,7 +19,7 @@
   height:100vh;
 }
 
-.entry-form input, button {
+.entry-form input, .entry-form button {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -116,6 +116,12 @@
   width: 100%;
   margin: auto;
   height: 30px;
+}
+
+/* styles for button inside info pop-up box*/
+.select-marker {
+  display: inline;
+  background-color: lightblue;
 }
 
 /* Main page nav styling */

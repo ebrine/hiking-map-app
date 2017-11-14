@@ -96,7 +96,7 @@ function initMap() {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         markers.forEach(function(marker) {
         google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>');
+              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  '<button class="select-marker" onclick="myFunction()">Select</button>');
               infowindow.open(map, this);
             });
         })
