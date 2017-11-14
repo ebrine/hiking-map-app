@@ -89,7 +89,31 @@ function initMap() {
       }
     });
     map.fitBounds(bounds);
-  });
+    // console.log(places[0].id)
+    var service = new google.maps.places.PlacesService(map);
+    var infowindow = new google.maps.InfoWindow();
+    service.getDetails(places[0], callback)
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        console.log(results)
+        var marker = new google.maps.Marker({
+          map: map,
+          place: {
+            placeId: results.place_id,
+            location: results.geometry.location
+          }
+        });
+        markers.forEach(function(marker) {
+        google.maps.event.addListener(marker, 'click', function() {
+          console.log("CLICKED")
+              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>');
+              infowindow.open(map, this);
+            });
+        })
+      }
+    }
+    // console.log(details)
+  })
 
   function clearMarkers() {
     markers.forEach(function(marker) {
@@ -106,7 +130,3 @@ function initMap() {
   })
 
 }
-
-$(document).ready(() => {
-
-})
