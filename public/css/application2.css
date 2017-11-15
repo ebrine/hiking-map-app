@@ -4,6 +4,7 @@
     --pink: #EAB5A1;
 }
 
+/* login page styling */
 .error-container {
   width: 80%;
   background-color: hsl(0, 100%, 80%);
@@ -18,7 +19,7 @@
   height:100vh;
 }
 
-.entry-form input, button {
+.entry-form input, .entry-form button {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -78,14 +79,63 @@
   border: 1px solid var(--orange);
   border-radius: 8px;
 }
+
+/* Main page styling */
+
 .map {
-   height: 400px;
+   height: 500px;
    margin-left: auto;
    margin-right: auto;
    margin-top: 50px;
    width: 80%;
 }
 
+.sidebar {
+  float: left;
+  width: 30%;
+  height: 1000px;
+  background-color: var(--orange);
+}
+
+.content-wrap {
+  float: right;
+  width: 70%;
+  height: 1000px;
+  background-color: #EAB5A1;
+}
+
+.search-input {
+  width: 60%;
+  margin: auto;
+  border: 1px solid white;
+  margin-top: 50px;
+  padding: 10px;
+}
+.search-output {
+  width: 60%;
+  margin: auto;
+  border: 1px solid white;
+  margin-top: 50px;
+  padding: 10px;
+}
+.result-container {
+  height: 200px;
+  background-color: white;
+}
+
+.controls {
+  width: 100%;
+  margin: auto;
+  height: 30px;
+}
+
+/* styles for button inside info pop-up box*/
+.select-marker {
+  display: inline;
+  background-color: lightblue;
+}
+
+/* Main page nav styling */
 .topnav {
     background-color: var(--darkpurple);
     overflow: hidden;
@@ -121,18 +171,4 @@
     /* overflow to handle inner floating block */
     overflow: hidden;
 
-}
-
-.sidebar {
-    float: left;
-    width: 30%;
-    height: 1000px;
-    background-color: var(--orange);
-}
-
-.content-wrap {
-    float: right;
-    width: 70%;
-    height: 1000px;
-    background-color: #EAB5A1;
 }
