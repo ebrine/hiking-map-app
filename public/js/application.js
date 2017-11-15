@@ -139,4 +139,14 @@ function initMap() {
 }
 $(document).ready(() => {
 
+  function loadMarkers() {
+
+  }
+
+  $('#load-markers').click((e) => {
+    event.preventDefault();
+    $.ajax({
+      url: '/markers',
+    }).done
+  })
 })

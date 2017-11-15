@@ -104,6 +104,14 @@
   background-color: #EAB5A1;
 }
 
+.user-options-container {
+  border: 1px solid white;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+}
+
 .search-input {
   width: 60%;
   margin: auto;
