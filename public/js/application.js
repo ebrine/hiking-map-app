@@ -147,6 +147,8 @@ $(document).ready(() => {
     event.preventDefault();
     $.ajax({
       url: '/markers',
-    }).done
+    }).done((response) => {
+      console.log(response)
+    })
   })
 })
