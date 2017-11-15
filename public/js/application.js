@@ -107,9 +107,16 @@ function initMap() {
 
         markers.forEach(function(marker) {
         google.maps.event.addListener(marker, 'click', function() {
+          console.log(marker)
               infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  '<button class="select-marker">Select</button>');
               infowindow.open(map, this);
             });
+            $('#map').on('click', ".select-marker", (e) => {
+              console.log("HI")
+              console.log(e);
+              console.log(marker);
+              $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
+            })
         })
       }
     }
@@ -131,7 +138,5 @@ function initMap() {
 
 }
 $(document).ready(() => {
-  $('#map').on('click', ".select-marker", (e) => {
-    console.log("HI")
-  })
+
 })

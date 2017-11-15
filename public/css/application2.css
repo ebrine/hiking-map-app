@@ -111,6 +111,17 @@
   margin-top: 50px;
   padding: 10px;
 }
+.search-output {
+  width: 60%;
+  margin: auto;
+  border: 1px solid white;
+  margin-top: 50px;
+  padding: 10px;
+}
+.result-container {
+  height: 200px;
+  background-color: white;
+}
 
 .controls {
   width: 100%;
