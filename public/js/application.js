@@ -7,17 +7,17 @@ function initMap() {
     center: seattle,
     mapTypeId: 'hybrid',
   });
-  const marker = new google.maps.Marker({
-    position: seattle,
-    map: map,
-    label: "Seattle"
-  });
-  const forks = {lat: 47.9504, lng: -124.3855};
-  const marker2 = new google.maps.Marker({
-    position: forks,
-    map: map,
-    title: "other",
-  });
+  // const marker = new google.maps.Marker({
+  //   position: seattle,
+  //   map: map,
+  //   label: "Seattle"
+  // });
+  // const forks = {lat: 47.9504, lng: -124.3855};
+  // const marker2 = new google.maps.Marker({
+  //   position: forks,
+  //   map: map,
+  //   title: "other",
+  // });
 
   // when user clicks map, they can add a marker
   // future --> change so user has to select button to enable this
@@ -136,10 +136,20 @@ function initMap() {
     $("#pac-input").val('')
   })
 
-}
-$(document).ready(() => {
 
-  function loadMarkers() {
+
+
+  function displayMarkers(markers) {
+    var bounds = new google.maps.LatLngBounds();
+    markers.forEach(function(marker) {
+      new google.maps.Marker({
+        position: {lat: marker.lat, lng: marker.lng },
+        map: map,
+        label: marker.name,
+      });
+      bounds.extend(marker)
+    })
+    map.fitBounds(bounds);
 
   }
 
@@ -148,7 +158,10 @@ $(document).ready(() => {
     $.ajax({
       url: '/markers',
     }).done((response) => {
-      console.log(response)
+      displayMarkers(response)
     })
   })
+}
+$(document).ready(() => {
+
 })
