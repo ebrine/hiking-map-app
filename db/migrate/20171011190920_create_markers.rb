@@ -5,8 +5,8 @@ class CreateMarkers < ActiveRecord::Migration
       t.string :entry_type, null: false
       t.string :details
       t.string :image
-      t.integer :lat, null: false
-      t.integer :long, null: false
+      t.float :lat, null: false
+      t.float :lng, null: false
       t.belongs_to :user
 
       t.timestamps null: false

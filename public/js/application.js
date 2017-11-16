@@ -7,17 +7,17 @@ function initMap() {
     center: seattle,
     mapTypeId: 'hybrid',
   });
-  const marker = new google.maps.Marker({
-    position: seattle,
-    map: map,
-    label: "Seattle"
-  });
-  const forks = {lat: 47.9504, lng: -124.3855};
-  const marker2 = new google.maps.Marker({
-    position: forks,
-    map: map,
-    title: "other",
-  });
+  // const marker = new google.maps.Marker({
+  //   position: seattle,
+  //   map: map,
+  //   label: "Seattle"
+  // });
+  // const forks = {lat: 47.9504, lng: -124.3855};
+  // const marker2 = new google.maps.Marker({
+  //   position: forks,
+  //   map: map,
+  //   title: "other",
+  // });
 
   // when user clicks map, they can add a marker
   // future --> change so user has to select button to enable this
@@ -104,17 +104,18 @@ function initMap() {
     service.getDetails(places[0], callback)
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        let i = 0;
+        markers.forEach(function(marker,index) {
 
-        markers.forEach(function(marker) {
-        google.maps.event.addListener(marker, 'click', function() {
+        marker.addListener('click', function(e) {
           console.log(marker)
-              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  '<button class="select-marker">Select</button>');
+          console.log(e)
+          // debugger;
+              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  `<button class="select-marker" id='marker-${index}'>Select</button>`);
               infowindow.open(map, this);
             });
-            $('#map').on('click', ".select-marker", (e) => {
-              console.log("HI")
-              console.log(e);
-              console.log(marker);
+
+            $('#map').on('click', `#marker-${index}`, (e) => {
               $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
             })
         })
@@ -136,6 +137,31 @@ function initMap() {
     $("#pac-input").val('')
   })
 
+
+
+
+  function displayMarkers(markers) {
+    var bounds = new google.maps.LatLngBounds();
+    markers.forEach(function(marker) {
+      new google.maps.Marker({
+        position: {lat: marker.lat, lng: marker.lng },
+        map: map,
+        label: marker.name,
+      });
+      bounds.extend(marker)
+    })
+    map.fitBounds(bounds);
+
+  }
+
+  $('#load-markers').click((e) => {
+    event.preventDefault();
+    $.ajax({
+      url: '/markers',
+    }).done((response) => {
+      displayMarkers(response)
+    })
+  })
 }
 $(document).ready(() => {
 

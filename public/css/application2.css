@@ -3,7 +3,9 @@
     --darkpurple: #3D314A;
     --pink: #EAB5A1;
 }
-
+html, body {
+  height: 100%;
+}
 /* login page styling */
 .error-container {
   width: 80%;
@@ -93,15 +95,25 @@
 .sidebar {
   float: left;
   width: 30%;
-  height: 1000px;
+  height: 100vh;
+  display:block;
+  overflow:auto;
   background-color: var(--orange);
 }
 
 .content-wrap {
   float: right;
   width: 70%;
-  height: 1000px;
+  height: 100vh;
   background-color: #EAB5A1;
+}
+
+.user-options-container {
+  border: 1px solid white;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
 }
 
 .search-input {
