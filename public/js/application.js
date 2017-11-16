@@ -104,17 +104,18 @@ function initMap() {
     service.getDetails(places[0], callback)
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        let i = 0;
+        markers.forEach(function(marker,index) {
 
-        markers.forEach(function(marker) {
-        google.maps.event.addListener(marker, 'click', function() {
+        marker.addListener('click', function(e) {
           console.log(marker)
-              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  '<button class="select-marker">Select</button>');
+          console.log(e)
+          // debugger;
+              infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  `<button class="select-marker" id='marker-${index}'>Select</button>`);
               infowindow.open(map, this);
             });
-            $('#map').on('click', ".select-marker", (e) => {
-              console.log("HI")
-              console.log(e);
-              console.log(marker);
+
+            $('#map').on('click', `#marker-${index}`, (e) => {
               $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
             })
         })
