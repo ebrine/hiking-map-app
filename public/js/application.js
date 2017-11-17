@@ -32,7 +32,6 @@ function initMap() {
   // more details for that place.
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
-
     if (places.length == 0) {
       return;
     }
@@ -42,6 +41,7 @@ function initMap() {
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
+    var geocoder = new google.maps.Geocoder();
     places.forEach(function(place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
@@ -49,6 +49,7 @@ function initMap() {
       }
       console.log(place)
       // Create a marker for each place.
+
       markers.push(new google.maps.Marker({
         map: map,
         // icon: icon,
@@ -66,7 +67,7 @@ function initMap() {
     });
     map.fitBounds(bounds);
 
-    var service = new google.maps.places.PlacesService(map);
+    // var service = new google.maps.places.PlacesService(map);
     var infowindow = new google.maps.InfoWindow();
 
     // get details for selected location when clicked
@@ -82,6 +83,7 @@ function initMap() {
             });
 
             $('#map').on('click', `#marker-${index}`, (e) => {
+              $('#search-output').empty()
               $('#search-output').append('<h2>2. Add Details & Save</h2>')
               $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
             })
