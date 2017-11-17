@@ -6,3 +6,8 @@ get '/markers' do
     markers.to_json
   end
 end
+
+
+post '/markers' do
+  
+end

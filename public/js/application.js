@@ -83,9 +83,11 @@ function initMap() {
             });
 
             $('#map').on('click', `#marker-${index}`, (e) => {
-              $('#search-output').empty()
-              $('#search-output').append('<h2>2. Add Details & Save</h2>')
-              $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
+              $('.result-container').remove()
+              $('#add-details').remove()
+              $('#search-output').prepend('<h2 id="add-details">2. Add Details & Save</h2>')
+              $('#name-input').val(`${marker.title}`)
+              $('#save-form').show()
             })
         })
       }
@@ -135,6 +137,8 @@ function initMap() {
       displayMarkers(response)
     })
   })
+
+  $()
 
 }
 
