@@ -1,6 +1,4 @@
 
-
-
 function initMap() {
 
   // initialize map
@@ -54,6 +52,7 @@ function initMap() {
       markers.push(new google.maps.Marker({
         map: map,
         // icon: icon,
+        animation: google.maps.Animation.DROP, //just for fun
         title: place.name,
         position: place.geometry.location
       }));
@@ -71,16 +70,13 @@ function initMap() {
     var infowindow = new google.maps.InfoWindow();
 
     // get details for selected location when clicked
-    service.getDetails(places[0], callback)
-    function callback(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        let i = 0;
-        markers.forEach(function(marker,index) {
+    // service.getDetails(places[0], callback)
 
+    addInfoWindows()
+
+    function addInfoWindows() {
+        markers.forEach(function(marker,index) {
         marker.addListener('click', function(e) {
-          console.log(marker)
-          console.log(e)
-          // debugger;
               infowindow.setContent('<div><strong>' + marker.title + '</strong><br>' +  `<button class="select-marker" id='marker-${index}'>Select</button>`);
               infowindow.open(map, this);
             });
@@ -91,10 +87,7 @@ function initMap() {
             })
         })
       }
-    }
   })
-
-
 
   function placeMarker(position, map) {
       var marker = new google.maps.Marker({
@@ -112,16 +105,11 @@ function initMap() {
     });
   })
 
-
-
   $('#clear-search').click((e) => {
     event.preventDefault();
     clearMarkers()
     $("#pac-input").val('')
   })
-
-
-
 
   function displayMarkers(markers) {
     var bounds = new google.maps.LatLngBounds();
@@ -146,8 +134,8 @@ function initMap() {
     })
   })
 
-  return map;
 }
+
 $(document).ready(() => {
-  const map = initMap()
+
 })
