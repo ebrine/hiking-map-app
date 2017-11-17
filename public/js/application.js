@@ -1,6 +1,9 @@
+
+
+
 function initMap() {
 
-  // initialize map, add a few static markers just for testing
+  // initialize map
   seattle = {lat: 47.6062, lng: -122.321}
   const map = new google.maps.Map($('#map')[0], {
     zoom: 8,
@@ -18,10 +21,17 @@ function initMap() {
   });
 
   var markers = [];
+
+  function clearMarkers() {
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+      marker = null;
+    });
+    markers = [];
+  }
+
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-
-
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
@@ -30,10 +40,7 @@ function initMap() {
     }
 
     // Clear out the old markers.
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
+    clearMarkers();
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
@@ -42,17 +49,7 @@ function initMap() {
         console.log("Returned place contains no geometry");
         return;
       }
-
-      // For adding different icons depending on the place
-
-      // var icon = {
-      //   url: place.icon,
-      //   size: new google.maps.Size(71, 71),
-      //   origin: new google.maps.Point(0, 0),
-      //   anchor: new google.maps.Point(17, 34),
-      //   scaledSize: new google.maps.Size(25, 25)
-      // };
-
+      console.log(place)
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
         map: map,
@@ -89,6 +86,7 @@ function initMap() {
             });
 
             $('#map').on('click', `#marker-${index}`, (e) => {
+              $('#search-output').append('<h2>2. Add Details & Save</h2>')
               $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
             })
         })
@@ -106,7 +104,7 @@ function initMap() {
       });
       map.panTo(position);
   }
-  
+
   // when user clicks map, they can add a marker
   $('#select').click((e) => {
     map.addListener('click', function(e) {
@@ -114,12 +112,7 @@ function initMap() {
     });
   })
 
-  function clearMarkers() {
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markers = [];
-  }
+
 
   $('#clear-search').click((e) => {
     event.preventDefault();
@@ -152,7 +145,9 @@ function initMap() {
       displayMarkers(response)
     })
   })
+
+  return map;
 }
 $(document).ready(() => {
-
+  const map = initMap()
 })
