@@ -7,33 +7,6 @@ function initMap() {
     center: seattle,
     mapTypeId: 'hybrid',
   });
-  // const marker = new google.maps.Marker({
-  //   position: seattle,
-  //   map: map,
-  //   label: "Seattle"
-  // });
-  // const forks = {lat: 47.9504, lng: -124.3855};
-  // const marker2 = new google.maps.Marker({
-  //   position: forks,
-  //   map: map,
-  //   title: "other",
-  // });
-
-  // when user clicks map, they can add a marker
-  // future --> change so user has to select button to enable this
-  // because it gets annoying
-  map.addListener('click', function(e) {
-      placeMarker(e.latLng, map);
-  });
-
-  function placeMarker(position, map) {
-      var marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          draggable: true,
-      });
-      map.panTo(position);
-  }
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
@@ -123,6 +96,23 @@ function initMap() {
     }
   })
 
+
+
+  function placeMarker(position, map) {
+      var marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          draggable: true,
+      });
+      map.panTo(position);
+  }
+  
+  // when user clicks map, they can add a marker
+  $('#select').click((e) => {
+    map.addListener('click', function(e) {
+        placeMarker(e.latLng, map);
+    });
+  })
 
   function clearMarkers() {
     markers.forEach(function(marker) {
