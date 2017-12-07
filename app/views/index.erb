@@ -14,6 +14,19 @@
         <p>Click on map to set a marker, then Drag to correct location</p>
       </div>
       <div id="search-output" class="search-output">
+        <form class="save-form" id='save-form' action="/markers" method="post" style="display: none;">
+          <label for="name">Name: </label>
+          <input id="name-input" type="text" name="marker[name]" value="">
+          <input id="lat-input" type="hidden" name="marker[lat]" value="">
+          <input id="lng-input" type="hidden" name="marker[lng]" value="">
+          <select id="entry-input" name="marker[entry_type]" >
+            <option value="completed-hike">Completed Hike</option>
+            <option value="to-do-hike">Hike To Do</option>
+          </select>
+          <label for="details">Description: </label>
+          <input type="text" name="details" value="">
+          <input type="submit" name="" value="Save">
+        </form>
       </div>
     </div>
     <div class="content-wrap">

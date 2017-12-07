@@ -83,9 +83,13 @@ function initMap() {
             });
 
             $('#map').on('click', `#marker-${index}`, (e) => {
-              $('#search-output').empty()
-              $('#search-output').append('<h2>2. Add Details & Save</h2>')
-              $('#search-output').append(`<div class="result-container">${marker.title}</div>`)
+              $('.result-container').remove()
+              $('#add-details').remove()
+              $('#search-output').prepend('<h2 id="add-details">2. Add Details & Save</h2>')
+              $('#name-input').val(marker.title)
+              $('#lat-input').val(marker.position.lat)
+              $('#lng-input').val(marker.position.lng)
+              $('#save-form').show()
             })
         })
       }
@@ -132,7 +136,16 @@ function initMap() {
     $.ajax({
       url: '/markers',
     }).done((response) => {
+      clearMarkers()
       displayMarkers(response)
+    })
+  })
+
+  $('#save-form').submit((e) => {
+    event.preventDefault()
+    $.post('/markers', $('#save-form').serialize())
+    .done((response) => {
+      console.log(response);
     })
   })
 
